@@ -1,31 +1,35 @@
-apply plugin: 'java'
-apply plugin: 'eclipse'
-apply plugin: 'application'
-
-mainClassName = 'io.khan.squash.HelloWorld'
-
-// tag::repositories[]
-repositories {
-    mavenCentral()
+buildscript {
+	repositories {
+		mavenCentral()
+		maven { url "http://repo.spring.io/libs-release" }
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:1.0.2.RELEASE")
+	}
 }
-// end::repositories[]
 
-// tag::jar[]
+apply plugin: "java"
+apply plugin: "eclipse"
+apply plugin: "idea"
+apply plugin: "spring-boot"
+
 jar {
-    baseName = 'khan-squash-io'
-    version =  '0.1.0'
+  baseName = 'khan-squash-io'
+  version =  '0.1.0'
 }
-// end::jar[]
 
-// tag::dependencies[]
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+repositories {
+	mavenCentral()
+	maven { url "http://repo.spring.io/libs-release" }
+}
 
 dependencies {
-    compile "joda-time:joda-time:2.2"
-    testCompile "junit:junit:4.12"
+	compile("org.springframework.boot:spring-boot-starter-web")
+  compile("org.springframework.boot:spring-boot-autoconfigure:1.2.3.RELEASE")
+	compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+	testCompile("org.springframework.boot:spring-boot-starter-test")
 }
-// end::dependencies[]
 
-// tag::wrapper[]
-// end::wrapper[]
+task wrapper(type: Wrapper) {
+	gradleVersion = "1.6"
+}
