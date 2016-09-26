@@ -7,34 +7,34 @@ buildscript {
 	}
 		dependencies {
 			classpath "gradle.plugin.com.heroku.sdk:heroku-gradle:0.2.0"
+			classpath 'org.akhikhl.gretty:gretty:+'
  		}
 }
 apply plugin: "java"
 apply plugin: "eclipse"
 apply plugin: "idea"
-apply plugin: 'war'
 apply plugin: "com.heroku.sdk.heroku-gradle"
-apply plugin: 'jetty'
+apply plugin: 'org.akhikhl.gretty'
 
 heroku {
    appName = "api-upload-khan-squash"
 }
-
+/*
 jar {
   baseName = "khan-squash-io"
   version =  "0.1.0"
 }
-
+*/
 repositories {
 	mavenCentral()
 }
 
 dependencies {
+	compile 'org.slf4j:slf4j-api:1.7.5'
 	// use latest 2.x series
-  compile group: 'com.sparkjava', name: 'spark-core', version: '2.+'
-
-	compile "org.eclipse.jetty:jetty-runner:9.3.11.v20160721"
-	compile "com.google.appengine:appengine-api-1.0-sdk:1.9.42"
+  compile group: 'com.sparkjava', name: 'spark-core', version: '2.5'
+  compile "org.eclipse.jetty:jetty-runner:9.3.12.v20160915"
+//	compile "com.google.appengine:appengine-api-1.0-sdk:1.9.42"
 
 }
 

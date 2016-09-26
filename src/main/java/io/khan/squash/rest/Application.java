@@ -1,31 +1,20 @@
 package io.khan.squash.rest;
 
-import static spark.Spark.after;
-import static spark.Spark.post;
-import static spark.Spark.*;
+import static spark.Spark.get;
 
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Collection;
-
-import javax.servlet.MultipartConfigElement;
-import javax.servlet.http.Part;
-
-import com.google.appengine.api.blobstore.BlobKey;
-import com.google.appengine.api.blobstore.BlobstoreService;
-import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
+//import com.google.appengine.api.blobstore.BlobKey;
+//import com.google.appengine.api.blobstore.BlobstoreService;
+//import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
 
 import spark.servlet.SparkApplication;
 
 public class Application implements SparkApplication {
-
+	@Override
 	public void init() {
 		
 		get("/hello", (req, res) -> "hello jetty application");
 		
-
+/*
 		post("/upload", "multipart/form-data", (request, response) -> {
 
 			String location = "image"; // the directory location where files
@@ -65,6 +54,6 @@ public class Application implements SparkApplication {
 
 			return "OK";
 		});
-
+*/
 	}
 }
