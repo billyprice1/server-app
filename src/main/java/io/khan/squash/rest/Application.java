@@ -2,6 +2,7 @@ package io.khan.squash.rest;
 
 import static spark.Spark.after;
 import static spark.Spark.post;
+import static spark.Spark.*;
 
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -21,6 +22,9 @@ import spark.servlet.SparkApplication;
 public class Application implements SparkApplication {
 
 	public void init() {
+		
+		get("/hello", (req, res) -> "hello jetty application");
+		
 
 		post("/upload", "multipart/form-data", (request, response) -> {
 

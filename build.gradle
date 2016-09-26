@@ -12,7 +12,9 @@ buildscript {
 apply plugin: "java"
 apply plugin: "eclipse"
 apply plugin: "idea"
+apply plugin: 'war'
 apply plugin: "com.heroku.sdk.heroku-gradle"
+apply plugin: 'jetty'
 
 heroku {
    appName = "api-upload-khan-squash"
@@ -28,7 +30,9 @@ repositories {
 }
 
 dependencies {
-	compile "com.sparkjava:spark-core:2.5"
+	// use latest 2.x series
+  compile group: 'com.sparkjava', name: 'spark-core', version: '2.+'
+
 	compile "org.eclipse.jetty:jetty-runner:9.3.11.v20160721"
 	compile "com.google.appengine:appengine-api-1.0-sdk:1.9.42"
 
