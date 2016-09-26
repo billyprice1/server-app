@@ -1,33 +1,37 @@
 buildscript {
 	repositories {
 		mavenCentral()
-		maven { url "http://repo.spring.io/libs-release" }
+		maven {
+		  url "https://plugins.gradle.org/m2/"
+	 	}
 	}
-	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:1.0.2.RELEASE")
-	}
+		dependencies {
+			classpath "gradle.plugin.com.heroku.sdk:heroku-gradle:0.2.0"
+ 		}
 }
-
 apply plugin: "java"
 apply plugin: "eclipse"
 apply plugin: "idea"
-apply plugin: "spring-boot"
+apply plugin: "com.heroku.sdk.heroku-gradle"
+
+heroku {
+   appName = "api-upload-khan-squash"
+}
 
 jar {
-  baseName = 'khan-squash-io'
-  version =  '0.1.0'
+  baseName = "khan-squash-io"
+  version =  "0.1.0"
 }
 
 repositories {
 	mavenCentral()
-	maven { url "http://repo.spring.io/libs-release" }
 }
 
 dependencies {
-	compile("org.springframework.boot:spring-boot-starter-web")
-  compile("org.springframework.boot:spring-boot-autoconfigure:1.2.3.RELEASE")
-	compile("org.springframework.boot:spring-boot-starter-thymeleaf")
-	testCompile("org.springframework.boot:spring-boot-starter-test")
+	compile "com.sparkjava:spark-core:2.5"
+	compile "org.eclipse.jetty:jetty-runner:9.3.11.v20160721"
+	compile "com.google.appengine:appengine-api-1.0-sdk:1.9.42"
+
 }
 
 task wrapper(type: Wrapper) {
